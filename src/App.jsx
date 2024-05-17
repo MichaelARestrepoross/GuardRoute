@@ -11,6 +11,7 @@ import AboutTheDevs from './Components/CommonComponents/AboutTheDevs'
 import AccidentIndex from './Components/AccidentIndex';
 import AccidentDetailed from './Components/AccidentDetailed';
 import DetailsMap from './Components/DetailsMap'
+import IndexMap from './Components/IndexMap'
 import PeopleIndex from './Components/PeopleIndex'
 
 
@@ -30,6 +31,7 @@ const App = () => {
           />
           <Route path="/People" element={<PeopleIndex />} />
           <Route path="/maps" element={<DetailsMap />} />
+          <Route path="/indexmaps" element={<IndexMap />} />
           <Route path="/aboutthedevs" element={<AboutTheDevs />} />
       </Routes>
       <Footer/>
