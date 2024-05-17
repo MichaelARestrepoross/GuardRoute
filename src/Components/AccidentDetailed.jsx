@@ -8,6 +8,8 @@ const CRASHES_API = import.meta.env.VITE_CRASHES_BASE_URL;
 const CRASHES_TOKEN = import.meta.env.VITE_CRASHES_TOKEN;
 const VEHICLES_API = import.meta.env.VITE_VEHICLES_BASE_URL;
 const VEHICLES_TOKEN = import.meta.env.VITE_CRASHES_TOKEN;
+const PERSONS_API = import.meta.env.VITE_PERSONS_BASE_URL;
+const PERSONS_TOKEN = import.meta.env.VITE_PERSONS_TOKEN;
 
 const GOOGLE_MAPS_TOKEN = import.meta.env.VITE_GOOGLE_MAPS_TOKEN;
 const GOOGLE_MAP_ID = import.meta.env.VITE_GOOGLE_MAP_ID
@@ -15,6 +17,7 @@ const GOOGLE_MAP_ID = import.meta.env.VITE_GOOGLE_MAP_ID
 const AccidentDetailed = () => {
     const [crash, setCrash] = useState(null);
     const [vehicle, setVehicle] = useState(null);
+    const [person, setPerson] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const { id } = useParams();
     const [open, setOpen] = useState(false)
@@ -67,6 +70,32 @@ const AccidentDetailed = () => {
         }
 
         fetchVehicle();
+    }, [id]);
+
+    useEffect(() => {
+        async function fetchPerson() {
+            try {
+                const response = await fetch(`${PERSONS_API}?$$app_token=${PERSONS_TOKEN}&collision_id=${id}`);
+                if (response.ok) {
+                    const data = await response.json();    
+                    const personById = data[0];
+                    if (personById) {
+                        console.log(personById);
+                        setPerson(personById);
+                    } else {
+                        console.log('Person with ID', id, 'not found.');
+                    }
+                } else {
+                    console.error('Failed to fetch Persons data');
+                }
+            } catch (error) {
+                console.error('Error fetching Persons data:', error);
+            } finally {
+                setIsLoading(false);
+            }
+        }
+
+        fetchPerson();
     }, [id]);
 
     // const position = squirrel ? { lat: parseFloat(squirrel.y), lng: parseFloat(squirrel.x) } : { lat: 0, lng: 0 };
@@ -140,6 +169,9 @@ const AccidentDetailed = () => {
             </div>
             <div>
                 {vehicle ? (vehicle.vehicle_type):(<p>error</p>)}
+            </div>
+            <div>
+                {person ? (person.person_type):(<p>No persons were injured in this collison</p>)}
             </div>
         </>
     );
