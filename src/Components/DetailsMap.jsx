@@ -7,7 +7,7 @@ import {
   InfoWindow,
 } from '@vis.gl/react-google-maps';
 
-function SquirrelMap({GOOGLE_MAPS_TOKEN, GOOGLE_MAP_ID, position, open, setOpen, squirrelName}) {
+function DetailsMap({GOOGLE_MAPS_TOKEN, GOOGLE_MAP_ID, position, open, setOpen, squirrelName}) {
   const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${position.lat},${position.lng}`;
 
   return (
@@ -38,4 +38,4 @@ function SquirrelMap({GOOGLE_MAPS_TOKEN, GOOGLE_MAP_ID, position, open, setOpen,
   );
 }
 
-export default SquirrelMap;
+export default DetailsMap;

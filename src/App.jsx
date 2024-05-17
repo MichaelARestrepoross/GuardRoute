@@ -8,9 +8,10 @@ import LandingPage from './Components/CommonComponents/LandingPage'
 import AboutTheDevs from './Components/CommonComponents/AboutTheDevs'
 
 //Components
-import SquirrelDetailed from './Components/SquirrelDetailed'
-import SquirrelIndex from './Components/SquirrelIndex'
-import SquirrelMap from './Components/SquirrelMap'
+import AccidentIndex from './Components/AccidentIndex';
+import AccidentDetailed from './Components/AccidentDetailed';
+import DetailsMap from './Components/DetailsMap'
+import PeopleIndex from './Components/PeopleIndex'
 
 
 const App = () => {
@@ -22,12 +23,13 @@ const App = () => {
       <Routes>
           <Route path="/" element={<LandingPage />} />
 
-          <Route path="/squirrels" element={<SquirrelIndex />} />
+          <Route path="/accidents" element={<AccidentIndex />} />
           <Route
-            path="/squirrels/:id"
-            element={<SquirrelDetailed />}
+            path="/accidents/:id"
+            element={<AccidentDetailed />}
           />
-          <Route path="/maps" element={<SquirrelMap />} />
+          <Route path="/People" element={<PeopleIndex />} />
+          <Route path="/maps" element={<DetailsMap />} />
           <Route path="/aboutthedevs" element={<AboutTheDevs />} />
       </Routes>
       <Footer/>

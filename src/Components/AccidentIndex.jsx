@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import SquirrelSingle from './SquirrelSingle';
+import AccidentDetailed from './AccidentDetailed';
 import { useNavigate } from 'react-router-dom';
 import {reverseRegion} from '../Helpers/SquirrelIndexHelper'
 import { generateNameFromID } from '../Helpers/SingleSquirrelHelper';
@@ -9,7 +9,7 @@ import '../App.css';
 const SQUIRREL_API = import.meta.env.VITE_SQUIRREL_BASE_URL;
 const VITE_SQUIRREL_TOKEN = import.meta.env.VITE_SQUIRREL_TOKEN;
 
-function SquirrelIndex() {
+function AccidentIndex() {
     const [squirrels, setSquirrels] = useState([]);
     const [filteredSquirrels, setFilteredSquirrels] = useState([]);
     const [filter, setFilter] = useState(null); 
@@ -127,7 +127,7 @@ function SquirrelIndex() {
                         .filter(squirrel => squirrel.unique_squirrel_id !== null)
                         .map(squirrel => (
                             <div key={squirrel.unique_squirrel_id} className="h-full cursor-pointer" onClick={() => handleClick(squirrel.unique_squirrel_id)}>
-                                <SquirrelSingle
+                                <AccidentDetailed
                                     squirrel={squirrel}
                                 />
                             </div>
@@ -139,4 +139,4 @@ function SquirrelIndex() {
     );
 }
 
-export default SquirrelIndex;
+export default AccidentIndex;

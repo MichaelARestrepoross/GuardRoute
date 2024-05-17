@@ -3,7 +3,7 @@ import { formatDate, getImageUrl, generateNameFromID } from '../Helpers/SingleSq
 import { getRegion } from '../Helpers/SquirrelIndexHelper';
 
 
-function SquirrelSingle({ squirrel }) {
+function AccidentSingle({ squirrel }) {
     // Format the date from "10142018" to "May 3, 2018 example"
 
 
@@ -32,4 +32,4 @@ function SquirrelSingle({ squirrel }) {
     );
 }
 
-export default SquirrelSingle;
+export default AccidentSingle;
