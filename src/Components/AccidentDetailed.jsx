@@ -112,7 +112,8 @@ const AccidentDetailed = () => {
                 <em>{squirrelName}</em> was spotted on {squirrel && formatDate(squirrel.date)}!
                 </h3>
             </div> */}
-            <div className="h-auto md:px-20 md:py-5 bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('https://res.cloudinary.com/dwygxzqku/image/upload/v1714890505/SquirrelQuest/jo-1o8-ns6svD0-unsplash_kafaft.jpg')" }}>
+            <div className="h-auto md:px-20 md:py-5 bg-cover bg-center bg-fixed">
+                {/* to add background: style={{ backgroundImage: "url('https://res.cloudinary.com/dwygxzqku/image/upload/v1714890505/SquirrelQuest/jo-1o8-ns6svD0-unsplash_kafaft.jpg')" }} */}
                 <br/>
                 {/* <h1 className="grid place-items-center box-decoration-clone bg-gradient-to-r from-light-teal/80 to-red-orange/80 text-white text-7xl px-10 rounded-s md-text-xl">
                     <p className="italic hover:not-italic" style={{ fontFamily: 'Silkscreen, sans-serif', fontStyle: 'normal' }}>
@@ -157,7 +158,7 @@ const AccidentDetailed = () => {
                         //         )}    
                         // </div>
                         <h1>
-                            {crash.crash_date}
+                            Crash date from crash data: {crash.crash_date}
                         </h1>
                         ) : (
                             <div className="h-screen md:px-20 md:py-5 bg-cover bg-center bg-fixed mb-20 flex justify-center items-center" style={{ backgroundImage: "url('https://res.cloudinary.com/dwygxzqku/image/upload/v1714977396/SquirrelQuest/viktor-forgacs-I2eKb4LzXQk-unsplash_rekn7m.jpg')", opacity:0.9 }}>
@@ -168,10 +169,10 @@ const AccidentDetailed = () => {
                 )}
             </div>
             <div>
-                {vehicle ? (vehicle.vehicle_type):(<p>error</p>)}
+                {vehicle ? (<div>Vehicle type from Vehicle data: {vehicle.vehicle_type}</div>):(<p>error</p>)}
             </div>
             <div>
-                {person ? (person.person_type):(<p>No persons were injured in this collison</p>)}
+                {person ? (<div>Person type from Person data: {person.person_type}</div>):(<p>No persons were injured in this collison</p>)}
             </div>
         </>
     );
