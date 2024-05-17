@@ -6,11 +6,15 @@ import DetailsMap from './DetailsMap';
 
 const CRASHES_API = import.meta.env.VITE_CRASHES_BASE_URL;
 const CRASHES_TOKEN = import.meta.env.VITE_CRASHES_TOKEN;
+const VEHICLES_API = import.meta.env.VITE_VEHICLES_BASE_URL;
+const VEHICLES_TOKEN = import.meta.env.VITE_CRASHES_TOKEN;
+
 const GOOGLE_MAPS_TOKEN = import.meta.env.VITE_GOOGLE_MAPS_TOKEN;
 const GOOGLE_MAP_ID = import.meta.env.VITE_GOOGLE_MAP_ID
 
 const AccidentDetailed = () => {
     const [crash, setCrash] = useState(null);
+    const [vehicle, setVehicle] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const { id } = useParams();
     const [open, setOpen] = useState(false)
@@ -38,6 +42,31 @@ const AccidentDetailed = () => {
         }
 
         fetchCrash();
+    }, [id]);
+
+    useEffect(() => {
+        async function fetchVehicle() {
+            try {
+                const response = await fetch(`${VEHICLES_API}?$$app_token=${VEHICLES_TOKEN}&collision_id=${id}`);
+                if (response.ok) {
+                    const data = await response.json();    
+                    const vehicleById = data[0];
+                    if (vehicleById) {
+                        setVehicle(vehicleById);
+                    } else {
+                        console.log('Vehicle with ID', id, 'not found.');
+                    }
+                } else {
+                    console.error('Failed to fetch Vehicles data');
+                }
+            } catch (error) {
+                console.error('Error fetching Vehicles data:', error);
+            } finally {
+                setIsLoading(false);
+            }
+        }
+
+        fetchVehicle();
     }, [id]);
 
     // const position = squirrel ? { lat: parseFloat(squirrel.y), lng: parseFloat(squirrel.x) } : { lat: 0, lng: 0 };
@@ -108,6 +137,9 @@ const AccidentDetailed = () => {
                         )}
                     </div>
                 )}
+            </div>
+            <div>
+                {vehicle ? (vehicle.vehicle_type):(<p>error</p>)}
             </div>
         </>
     );
