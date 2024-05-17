@@ -2,14 +2,14 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { formatDate, getImageUrl, generateNameFromID } from '../Helpers/SingleSquirrelHelper';
 import '../App.css';
-import SquirrelMap from './SquirrelMap';
+import DetailsMap from './DetailsMap';
 
 const SQUIRREL_API = import.meta.env.VITE_SQUIRREL_BASE_URL;
 const VITE_SQUIRREL_TOKEN = import.meta.env.VITE_SQUIRREL_TOKEN;
 const GOOGLE_MAPS_TOKEN = import.meta.env.VITE_GOOGLE_MAPS_TOKEN;
 const GOOGLE_MAP_ID = import.meta.env.VITE_GOOGLE_MAP_ID
 
-const SquirrelDetailed = () => {
+const AccidentDetailed = () => {
     const [squirrel, setSquirrel] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const { id } = useParams();
@@ -95,7 +95,7 @@ const SquirrelDetailed = () => {
                                 </p>
 
                                 {squirrel && (
-                                        <SquirrelMap GOOGLE_MAPS_TOKEN={GOOGLE_MAPS_TOKEN} GOOGLE_MAP_ID={GOOGLE_MAP_ID} position={position} open={open} setOpen={setOpen} squirrelName={squirrelName}/>
+                                        <DetailsMap GOOGLE_MAPS_TOKEN={GOOGLE_MAPS_TOKEN} GOOGLE_MAP_ID={GOOGLE_MAP_ID} position={position} open={open} setOpen={setOpen} squirrelName={squirrelName}/>
                                 )}    
                         </div>
                         ) : (
@@ -110,4 +110,4 @@ const SquirrelDetailed = () => {
     );
 }
 
-export default SquirrelDetailed;
+export default AccidentDetailed;
