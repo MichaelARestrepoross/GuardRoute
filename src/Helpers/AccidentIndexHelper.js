@@ -27,5 +27,33 @@ export function formatCrashDate(dateString) {
   }
 }
 
-
+// Define the formatCrashTime function: brocken needs to be done again
+export function formatCrashTime(timeString) {
+    // Regex to match time in HH:MM AM/PM format
+    const timeRegex = /^(\d{1,2}):(\d{2})\s?(AM|PM)$/i;
+    const match = timeString.match(timeRegex);
+  
+    if (!match) {
+      throw new Error('Invalid time format. Please provide time in HH:MM AM/PM format.');
+    }
+  
+    let hour = parseInt(match[1], 10);
+    const minute = match[2];
+    const period = match[3].toUpperCase();
+  
+    // Convert to 24-hour format
+    if (period === 'PM' && hour !== 12) {
+      hour += 12;
+    } else if (period === 'AM' && hour === 12) {
+      hour = 0;
+    }
+  
+    // Ensure hour is formatted as two digits
+    const formattedHour = hour.toString().padStart(2, '0');
+  
+    // Construct the formatted time string in HH:MM format
+    const formattedTime = `${formattedHour}:${minute}`;
+  
+    return formattedTime;
+}
   
