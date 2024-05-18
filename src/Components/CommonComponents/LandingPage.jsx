@@ -6,9 +6,9 @@ const LandingPage = () => {
   return (
       <>
       {/* add smooth scroll on click */}
-        <div className="flex items-center justify-center h-screen bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('https://res.cloudinary.com/dwygxzqku/image/upload/v1714969862/SquirrelQuest/andrey-svistunov-jgFA_cfgNHk-unsplash_klfedb.jpg')" }}
+        <div className="flex items-center justify-center h-screen bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('https://res.cloudinary.com/dwygxzqku/image/upload/v1715988788/GuardRoute/city.jpg')" }}
         >
-            <h1 className="p-8 text-4xl md:text-6xl font-bold mb-5 bg-black/70 text-white text-center rounded-xl hover:bg-black" style={{ fontFamily: 'Silkscreen, sans-serif', fontStyle: 'normal' }}
+            <h1 className="p-8 text-4xl md:text-6xl font-bold mb-5 bg-black/70 text-white text-center rounded-xl hover:bg-black" style={{ fontFamily: 'Orbitron, sans-serif', fontStyle: 'normal' }}
             onClick={() => navigate("/squirrels")}
             >
                   Welcome to GuardRoute

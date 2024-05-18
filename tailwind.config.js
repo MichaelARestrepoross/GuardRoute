@@ -11,21 +11,19 @@ export default {
         xl: '1440px',
       },
       colors: {
-        'black': '#001219',
-        'dark-teal': '#005F73',
-        'light-teal': '#0A9396',
-        'mint': '#94D2BD',
-        'beige': '#E9D8A6',
-        'orange': '#EE9B00',
-        'dark-orange': '#CA6702',
-        'red-orange': '#BB3E03',
-        'red': '#AE2012',
-        'burgandy': '#9B2226'
+        'dark-navy': '#00043A',
+        'navy': '#002962',
+        'light-navy': '#004E89',
+        'white': '#FFFFFF',
+        'light-blue': '#407BA7',
+        'red': '#FF002B',
+        'red-orange': '#C00021',
+        'dark-red': '#A0001C',
+        'burgandy': '#800016',
       },
       fontFamily: {
         "noto-sans": ['"Noto Sans Symbols"', "sans-serif"],
-        'poetsen-one': ['"Poetsen One"', 'sans-serif'],
-        'silkscreen': ['"Silkscreen"', 'sans-serif']
+        "orbitron": ['"Orbitron"', 'sans-serif'],
       },
       fontWeight: {
         // Define weight classes from 100 to 900
