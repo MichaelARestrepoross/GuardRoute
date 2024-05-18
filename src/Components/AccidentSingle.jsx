@@ -1,35 +1,84 @@
+// Import React and the necessary functions from the AccidentIndexHelper
 import React from 'react';
-import { formatDate, getImageUrl, generateNameFromID } from '../Helpers/SingleSquirrelHelper';
-import { getRegion } from '../Helpers/SquirrelIndexHelper';
+import { formatCrashDate, formatCrashTime } from '../Helpers/AccidentIndexHelper';
+import { useNavigate } from 'react-router-dom';
+
+// Define the AccidentSingle component
+const AccidentSingle = ({ accident }) => {
+    const navigate = useNavigate();
 
 
-function AccidentSingle({ squirrel }) {
-    // Format the date from "10142018" to "May 3, 2018 example"
+  // Determine the image URL based on person age and sex
+  let imgUrl = '';
+  if (accident.person_age < 18) {
 
+  }
 
-     // Get the image URL for the squirrel
-     const imageUrl = getImageUrl(squirrel.primary_fur_color, squirrel.unique_squirrel_id);
-     const squirrelName = generateNameFromID(squirrel.unique_squirrel_id);
-    return (
-        <div className="bg-gray-100/60 rounded-xl mx-auto my-auto shadow-2xl  backdrop-brightness-150 backdrop-blur-md bg-opacity-90 hover:bg-mint/70
-        max-w-auto overflow-hidden h-auto md:min-h-60 p-2">
-            <div className="md:flex">
-                <div className="flex-col md:flex-shrink-0 mb-3">
-                    <img className="h-32 w-full object-cover md:h-full md:w-48 max-h-36 rounded-xl pr-2" src={imageUrl} alt="" />
-                </div>
-                <div className="p-4 bg-black/20 rounded-lg" style={{ fontFamily: 'Courier, sans-serif', fontStyle: 'normal' }}>
-                <p className=" text-gray-800 font-bold text-xl">Name: {squirrelName}</p>
-                    <p className="text-gray-800 text-md">
-                        <strong>ID: </strong>{squirrel.unique_squirrel_id}</p>
-                    <p className="text-gray-800">
-                        <strong>Location: </strong
-                        >{getRegion(squirrel.hectare)} Central Park</p>
-                    <p className="text-gray-600">
-                        <strong>Date: </strong>{formatDate(squirrel.date)}</p>
-                </div>
-            </div>
+    // Styles for the scrollable div
+    const scrollableDivStyles = {
+
+    };
+    
+    const handleClick = (id) => {
+        navigate(`/accidents/${id}`);
+    };
+
+  // Render the component with the necessary details
+  return (
+    <div className="max-w-xl rounded-xl bg-black bg-opacity-70 p-6 text-lg text-white font-sans mb-6">
+      <div className="flex items-center justify-center mb-4">
+        <div className="w-32 h-32 rounded-full overflow-hidden bg-white p-2">
+          <img src={imgUrl} alt="Person Image" className="w-full h-full object-cover" />
         </div>
-    );
-}
+      </div>
+      <div className='' style={scrollableDivStyles}>
+        <p>
+          On {accident.crash_date ? formatCrashDate(accident.crash_date) : 'Unknown Date'}, at {accident.crash_time || 'Unknown Time'}, There was a accident where a
+        </p>
+        <p>
+          {' '}{accident.person_age}-year-old {accident.person_sex.toLowerCase() === 'm' ? 'male' : 'female'} that was a  
+          {accident.person_type ? accident.person_type.toLowerCase() : 'person'} who was involved in the
+          collision of the accident. 
+        </p>
+        <p>
+          {accident.position_in_vehicle
+            ? `They were positioned as ${accident.position_in_vehicle.toLowerCase()}.`
+            : ''}{' '}
+          {accident.safety_equipment ? `They used safety equipment such as: ${accident.safety_equipment.toLowerCase()}.` : ''}
+        </p>
+        <p>
+          {accident.person_injury === 'Injured'
+            ? `The ${accident.person_age}-year-old ${accident.person_sex.toLowerCase() === 'm' ? 'male' : 'female'} sustained injuries in the accident. `
+            : `The ${accident.person_age}-year-old ${accident.person_sex.toLowerCase() === 'm' ? 'male' : 'female'} had no specified injury. `}
+          {accident.ejection === 'Not Ejected'
+            ? "They were not ejected from the vehicle. "
+            : "They were ejected from the vehicle, which can be very serious. "}
+          {accident.emotional_status && accident.emotional_status !== 'Does Not Apply'
+            ? `Emotionally, the ${accident.person_age}-year-old ${accident.person_sex.toLowerCase() === 'm' ? 'male' : 'female'} was reported to be ${accident.emotional_status.toLowerCase()}. `
+            : ''}
+          {accident.bodily_injury && accident.bodily_injury !== 'Does Not Apply'
+            ? `The extent of bodily injury was: ${accident.bodily_injury.toLowerCase()}. `
+            : ''}
+          {accident.complaint && accident.complaint !== 'Does Not Apply' ? `They had the following complaint: ${accident.complaint.toLowerCase()}.` : ''}
+        </p>
+        <p>
+          {accident.ped_role ? `They were a ${accident.ped_role.toLowerCase()} in the incident at the accident.` : ''}
+        </p>
+        <p>
+          <br />(Collision ID: <em>{accident.collision_id || 'Unknown'}</em>)
+        </p>
+      </div>
+        <button
+            onClick={() => handleClick(accident.collision_id)}
+            className="bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded-full inline-block text-base mt-4 mb-4"
+            style={{ fontFamily: 'Silkscreen, sans-serif', fontStyle: 'normal' }}
+            >
+            Learn more about the incident
+        </button>
 
+    </div>
+  );
+};
+
+// Export the AccidentSingle component as default
 export default AccidentSingle;
