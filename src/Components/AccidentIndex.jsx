@@ -146,7 +146,7 @@ const AccidentIndex = () => {
               onClick={navigateNext}
               style={{ fontFamily: 'Silkscreen, sans-serif', fontStyle: 'normal' }}
             >
-              {'>'}
+              {`(${scrollIndex+1})>`}
             </button>
           )}
       </div>
