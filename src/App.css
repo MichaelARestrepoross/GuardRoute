@@ -34,3 +34,8 @@ div.modal {
   height: 100%;
   background-color: rgba(0,0,0,0.7);
 }
+
+.scroll-hor {
+  overflow: auto;
+  white-space: nowrap;
+}

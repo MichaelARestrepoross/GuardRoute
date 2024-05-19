@@ -31,7 +31,7 @@ const Nav = () => {
                 strokeWidth={3}
                 className="text-white w-7 h-7 mr-4 md:mr-12"
               /> */}
-              <p className="text-5xl">📰</p>
+              <p className="text-4xl">📰</p>
             </Link>
             {/* <Link to={"/account"}>
               <User strokeWidth={3} className="text-white w-7 h-7" />

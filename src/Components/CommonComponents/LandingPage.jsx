@@ -29,7 +29,7 @@ const LandingPage = () => {
         </div>
         <div className="flex justify-center items-center w-full">
               <video loop autoPlay muted>
-                <source src="https://s3.amazonaws.com/assets.centralparknyc.org/media/images/Spring-8.mp4" type="video/mp4" />
+                <source src="https://ia600502.us.archive.org/22/items/vid-20230930-102105864/VID_20230930_102105864.mp4" type="video/mp4" />
               </video>
         </div>
         <div className="h-screen bg-cover bg-center bg-fixed flex justify-center items-center" style={{ backgroundImage: "url('https://res.cloudinary.com/dwygxzqku/image/upload/v1714969864/SquirrelQuest/vincent-van-zalinge-rYZHmeH4dvQ-unsplash_dpgf2c.jpg')" }}>
