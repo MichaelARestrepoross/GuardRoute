@@ -117,7 +117,7 @@ const AccidentDetailed = () => {
                                 {crash.number_of_pedestrians_killed && crash.number_of_pedestrians_killed > 0 ? <p>In a tragic turn of events, a fatal collision has left the downtown area where this calamitous incident occured reeling. The incident, which occurred on the evening of {crash.crash_date} at {crash.crash_time}, has sent shockwaves through the community. According to reports, the collision resulted in {crash.number_of_persons_injured} injuries and {crash.number_of_persons_killed} fatalities. </p> : <p>In a disastrous turn of events, a collision has left the area reeling. The incident, which occurred on the evening of {crash.crash_date} at {crash.crash_time}, has sent shockwaves through the community.</p>}
 
                                 {crash.number_of_pedestrians_injured && crash.number_of_pedestrians_injured > 0 || crash.number_of_pedestrians_killed && crash.number_of_pedestrians_killed > 0 ?
-                                <p>Among the casualties were pedestrians highlighting the severity of the crash.</p>:<p>No pedestrians were involved in the accident.</p>}
+                                <p>Among the casualties were pedestrians highlighting the severity of the crash.</p>:<p>No pedestrians were involved in the accident; </p>}
 
                                 {crash.number_of_cyclist_injured > 0 ? <p>Furthermore, there are {crash.number_of_cyclist_injured} cyclists injured  </p> : <p></p>}
 
@@ -152,6 +152,7 @@ const AccidentDetailed = () => {
                                 
                                 {vehicles.map((vehicle, index) => (
                                 <div key={index}>
+                                    <hr/>
                                     <h1><strong>Vehicle Details</strong></h1>
                                     <p>Vehicle Type: {vehicle.vehicle_type}</p>
                                     {vehicle.vehicle_make && <p>Vehicle Make: {vehicle.vehicle_make}</p>}
@@ -171,6 +172,7 @@ const AccidentDetailed = () => {
                                     {vehicle.driver_license_jurisdiction && <p>Driver License Jurisdiction: {vehicle.driver_license_jurisdiction}</p>}
                                     <p>Contributing Factor 1: {vehicle.contributing_factor_1}</p>
                                     {vehicle.contributing_factor_2 && <p>Contributing Factor 2: {vehicle.contributing_factor_2}</p>}
+                                    <hr/>
                                     <br/>
                                 </div>
                         ))}</div>
@@ -189,6 +191,7 @@ const AccidentDetailed = () => {
                         {persons.length > 0 ? (
                             <div className='flex-shrink-0 flex text-2xl justify-between p-20 flex-wrap' style={{ fontFamily: 'Courier, sans-serif', fontStyle: 'normal' }}>{persons.map((person, index) => (
                                 <div className='w-[20vw]' key={index}>
+                                    <hr/>
                                     <p>Person Type: {person.person_type}</p>
                                     <p>Person Injury: {person.person_injury}</p>
                                     {person.person_age && <p>Person Age: {person.person_age}</p>}
@@ -200,6 +203,7 @@ const AccidentDetailed = () => {
                                     {person.complaint && <p>Complaint: {person.complaint}</p>}
                                     {person.ped_role && <p>Pedestrian Role: {person.ped_role}</p>}
                                     {person.person_sex && <p>Person Sex: {person.person_sex}</p>}
+                                    <hr/>
                                     <br/>
                                 </div>
                 ))}</div>
