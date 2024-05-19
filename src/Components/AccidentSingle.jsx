@@ -11,7 +11,13 @@ const AccidentSingle = ({ accident }) => {
   // Determine the image URL based on person age and sex
   let imgUrl = '';
   if (accident.person_age < 18) {
-
+    imgUrl = accident.person_sex.toLowerCase() === 'm'
+      ? 'https://res.cloudinary.com/dwygxzqku/image/upload/v1715959628/GuardRoute/boy_v6ruw9.png'
+      : 'https://res.cloudinary.com/dwygxzqku/image/upload/v1715959732/GuardRoute/girl_nxvqfh.png';
+  } else {
+    imgUrl = accident.person_sex.toLowerCase() === 'm'
+      ? 'https://res.cloudinary.com/dwygxzqku/image/upload/v1715959606/GuardRoute/Man_abmb4x.png'
+      : 'https://res.cloudinary.com/dwygxzqku/image/upload/v1715959789/GuardRoute/Woman_x9qisf.png';
   }
 
     // Styles for the scrollable div
