@@ -140,7 +140,7 @@ const AccidentIndex = () => {
           </div>
         </div>
         {/* Right arrow */}
-        {scrollIndex  && (
+        {scrollIndex < Math.ceil(filteredAccidents.length / 3) -1 && (
             <button
               className="bg-mint/90 text-dark-teal hover:bg-dark-teal hover:text-mint font-bold py-4 px-4 rounded-xl inline-block text-2xl absolute right-0 top-1/2 transform -translate-y-1/2"
               onClick={navigateNext}
