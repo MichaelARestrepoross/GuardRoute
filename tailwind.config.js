@@ -20,6 +20,7 @@ export default {
         'red-orange': '#C00021',
         'dark-red': '#A0001C',
         'burgandy': '#800016',
+        'yellow': '#E0CA3D'
       },
       fontFamily: {
         "noto-sans": ['"Noto Sans Symbols"', "sans-serif"],

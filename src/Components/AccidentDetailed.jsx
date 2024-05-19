@@ -99,24 +99,22 @@ const AccidentDetailed = () => {
 
     return (
         <>
-        <div className="flex justify-center items-center w-full">
-              <video loop autoPlay muted>
-                <source src="https://ia600502.us.archive.org/22/items/vid-20230930-102105864/VID_20230930_102105864.mp4" type="video/mp4" />
-              </video>
+        <div className="flex items-center justify-center h-[40vh] bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('https://res.cloudinary.com/dwygxzqku/image/upload/v1716102712/GuardRoute/header.jpg')" }}>
+        <div className="p-8 text-8xl md:text-8xl font-bold mb-5 bg-black/70 text-white text-center rounded-xl" style={{ fontFamily: 'Bebas Neue, sans-serif', fontStyle: 'normal' }}>
+        {crash ? crash.number_of_pedestrians_killed && crash.number_of_pedestrians_killed > 0 ? <h1 >Fatal Collision In NYC Area</h1> : <h1>Collision in NYC Area</h1>:<h1>Error fetching headline</h1>}</div>
         </div>
             {/* <div className="h-auto md:px-20 md:py-5 bg-cover bg-center bg-fixed mb-10"> */}
-            <div className="h-auto md:px-20 md:py-5 bg-cover bg-center bg-fixed mb-10">
+           
                 <br/>
                 {isLoading ? (
                     <p>Loading...</p>
                 ) : (
-                    <div style={{ fontFamily: 'Courier, sans-serif', fontStyle: 'normal' }}>
+                    <div className="h-auto md:px-20 md:py-5 bg-cover bg-center bg-fixed mb-10 text-2xl" style={{ fontFamily: 'Courier, sans-serif', fontStyle: 'normal' }}>
                         {crash ? (
                             <div>
+                                
                                 {crash.number_of_pedestrians_killed && crash.number_of_pedestrians_killed > 0 ? <h1>Fatal Collision In NYC Area</h1> : <h1>Collision in NYC Area</h1>}
                                 {crash.number_of_pedestrians_killed && crash.number_of_pedestrians_killed > 0 ? <p>In a tragic turn of events, a fatal collision has left the downtown area where this calamitous incident occured reeling. The incident, which occurred on the evening of {crash.crash_date} at {crash.crash_time}, has sent shockwaves through the community. According to reports, the collision resulted in {crash.number_of_persons_injured} injuries and {crash.number_of_persons_killed} fatalities. </p> : <p>In a disastrous turn of events, a collision has left the area reeling. The incident, which occurred on the evening of {crash.crash_date} at {crash.crash_time}, has sent shockwaves through the community.</p>}
-                                {/* <p>Crash Date: {crash.crash_date}</p>
-                                <p>Crash Time: {crash.crash_time}</p> */}
 
                                 {crash.number_of_pedestrians_injured && crash.number_of_pedestrians_injured > 0 || crash.number_of_pedestrians_killed && crash.number_of_pedestrians_killed > 0 ?
                                 <p>Among the casualties were pedestrians highlighting the severity of the crash.</p>:<p>No pedestrians were involved in the accident.</p>}
@@ -135,37 +133,22 @@ const AccidentDetailed = () => {
                                 {crash.vehicle_type_code1 && crash.vehicle_type_code2 && crash.contributing_factor_vehicle_1 && crash.contributing_factor_vehicle_2 ? <p>The collision involved multiple vehicles, including {crash.vehicle_type_code1} and {crash.vehicle_type_code2}. Factors contributing to the crash, such as {crash.contributing_factor_vehicle_1} and {crash.contributing_factor_vehicle_2}, are under investigation.</p> : <p></p>}
 
                                 {crash.vehicle_type_code1 ? <p>The collision involved a {crash.vehicle_type_code1}. Factors contributing to the crash are under investigation.</p> : <p></p>}
-
-
-                                {/* {crash.on_street_name && <p>On Street Name: {crash.on_street_name}</p>}
-                                {crash.off_street_name && <p>Off Street Name: {crash.off_street_name}</p>} */}
-                                {/* {crash.number_of_persons_injured && <p>Number of Persons Injured: {crash.number_of_persons_injured}</p>} */}
-                                {/* {crash.number_of_persons_killed && <p>Number of Persons Killed: {crash.number_of_persons_killed}</p>} */}
-                                {/* {crash.number_of_pedestrians_injured && <p>Number of Pedestrians Injured: {crash.number_of_pedestrians_injured}</p>} */}
-                                {/* {crash.number_of_pedestrians_killed && <p>Number of Pedestrians Killed: {crash.number_of_pedestrians_killed}</p>} */}
-                                {/* {crash.number_of_cyclist_injured && <p>Number of Cyclists Injured: {crash.number_of_cyclist_injured}</p>}
-                                {crash.number_of_cyclist_killed && <p>Number of Cyclists Killed: {crash.number_of_cyclist_killed}</p>}
-                                {crash.number_of_motorist_injured && <p>Number of Motorists Injured: {crash.number_of_motorist_injured}</p>}
-                                {crash.number_of_motorist_killed && <p>Number of Motorists Killed: {crash.number_of_motorist_killed}</p>} */}
-                                {/* {crash.contributing_factor_vehicle_1 && <p>Contributing Factor Vehicle 1: {crash.contributing_factor_vehicle_1}</p>}
-                                {crash.contributing_factor_vehicle_2 && <p>Contributing Factor Vehicle 2: {crash.contributing_factor_vehicle_2}</p>} */}
-                                {/* <p>Collision ID: {crash.collision_id}</p> */}
-                                {/* {crash.vehicle_type_code1 && <p>Vehicle Type Code 1: {crash.vehicle_type_code1}</p>}
-                                {crash.vehicle_type_code2 && <p>Vehicle Type Code 2: {crash.vehicle_type_code2}</p>} */}
                             </div>
                         ) : (
-                            <p>error</p>
+                            <p>Error displaying data</p>
                         )}
                     </div>
                 )}
-            <div className="flex items-center justify-center h-screen bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('https://res.cloudinary.com/dwygxzqku/image/upload/v1716054136/GuardRoute/header2_euazcz.jpg')" }}
+            <div className="flex items-center justify-center h-[40vh] bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('https://res.cloudinary.com/dwygxzqku/image/upload/v1716102712/GuardRoute/header.jpg')" }}
         ></div>
-            <div style={{ fontFamily: 'Courier, sans-serif', fontStyle: 'normal' }}>
+            <div >
                 {isLoading ? (<p>Loading...</p>) :
                     (<div><br/>
-                        <h1>The vehicles involved in this accident:</h1>
+                        <h1 className='text-center text-3xl'>The vehicles involved in this accident:</h1>
                         {vehicles.length > 0 ? (
-                            <div>{vehicles.map((vehicle, index) => (
+                            <div className='flex-shrink-0 flex text-2xl justify-between gap-3 m-20'style={{ fontFamily: 'Courier, sans-serif', fontStyle: 'normal' }}>
+                                
+                                {vehicles.map((vehicle, index) => (
                                 <div key={index}>
                                     <h1>Vehicle Details:</h1>
                                     <p>Vehicle Type: {vehicle.vehicle_type}</p>
@@ -193,24 +176,18 @@ const AccidentDetailed = () => {
                     <p>No vehicles in this collision.</p>
                 )}
             </div>)}
-            
+            <div className="flex h-[40vh] bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('https://res.cloudinary.com/dwygxzqku/image/upload/v1716102031/GuardRoute/bicycle-accident_wmjxcp.jpg')" }}
+            ></div>
                 {isLoading ? (<p>Loading...</p>) :
                     (
                     <div className='mb-12'>
-                        <h1>Details of the victims involved in the accident:</h1>
-                        <h2>Victims of the collision: {persons.length}</h2>
+                        <h1 className='text-center'>Details of the victims involved in the accident:</h1>
+                        <h2 className='text-center'>Victims of the collision: {persons.length}</h2>
                         {persons.length > 0 ? (
-                            <div>{persons.map((person, index) => (
-                                <div key={index}>
-                                    
+                            <div className='flex-shrink-0 flex text-2xl justify-between' style={{ fontFamily: 'Courier, sans-serif', fontStyle: 'normal' }}>{persons.map((person, index) => (
+                                <div className='w-[20vw]' key={index}>
                                     <p>Person Type: {person.person_type}</p>
-                                    {/* <p>Unique ID: {person.unique_id}</p>
-                                    <p>Collision ID: {person.collision_id}</p>
-                                    <p>Crash Date: {person.crash_date}</p>
-                                    <p>Crash Time: {person.crash_time}</p>
-                                    <p>Person ID: {person.person_id}</p> */}
                                     <p>Person Injury: {person.person_injury}</p>
-                                    {/* <p>Vehicle ID: {person.vehicle_id}</p> */}
                                     {person.person_age && <p>Person Age: {person.person_age}</p>}
                                     {person.ejection && <p>Ejection: {person.ejection}</p>}
                                     {person.emotional_status &&<p>Emotional Status: {person.emotional_status}</p>}
@@ -227,7 +204,7 @@ const AccidentDetailed = () => {
                 </div>)
                 }
                 </div>
-            </div>
+            
         </>
     )
 }
