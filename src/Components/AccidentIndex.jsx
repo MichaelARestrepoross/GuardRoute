@@ -118,7 +118,7 @@ const AccidentIndex = () => {
   };
 
   return (
-    <div className="h-screen mb-auto bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('https://res.cloudinary.com/dwygxzqku/image/upload/v1716106189/GuardRoute/nauman-abdul-hafeez-f05TIl5AOJc-unsplash_yxsagy.jpg')" }}>
+    <div className="h-auto min-h-screen mb-auto bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('https://res.cloudinary.com/dwygxzqku/image/upload/v1716106189/GuardRoute/nauman-abdul-hafeez-f05TIl5AOJc-unsplash_yxsagy.jpg')" }}>
       <div className="container m-auto p-10">
         <Modal isOpen={isModalOpen} onCancel={closeModal} />
 
@@ -143,7 +143,7 @@ const AccidentIndex = () => {
               disabled={scrollIndex <= 0}
               style={{ fontFamily: 'Silkscreen, sans-serif', fontStyle: 'normal' }}
             >
-              {`⬅️ ${scrollIndex-1}`}
+              {`⬅️ ${scrollIndex}`}
             </button>
             }
         {/* Displaying filtered accidents */}
@@ -158,6 +158,7 @@ const AccidentIndex = () => {
               ))}
             </div>
           </div>
+        <IndexMap locations={locations} GOOGLE_MAPS_TOKEN={GOOGLE_MAPS_TOKEN} GOOGLE_MAP_ID={GOOGLE_MAP_ID} open={open} setOpen={setOpen} />
         </div>
         {/* Right arrow */}
         {scrollIndex < Math.ceil(filteredAccidents.length / 3) -1 && (
@@ -166,11 +167,10 @@ const AccidentIndex = () => {
               onClick={navigateNext}
               style={{ fontFamily: 'Orbitron, sans-serif', fontStyle: 'normal' }}
             >
-              {`${scrollIndex+1} ➡️`}
+              {`${scrollIndex+2} ➡️`}
             </button>
           )}
       </div>
-      <IndexMap locations={locations} GOOGLE_MAPS_TOKEN={GOOGLE_MAPS_TOKEN} GOOGLE_MAP_ID={GOOGLE_MAP_ID} open={open} setOpen={setOpen} />
     </div>
   );
 };

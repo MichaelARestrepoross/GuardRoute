@@ -227,7 +227,6 @@ const AccidentDetailed = () => {
                 {crash && (
                     <DetailsMap GOOGLE_MAPS_TOKEN={GOOGLE_MAPS_TOKEN} GOOGLE_MAP_ID={GOOGLE_MAP_ID} location={location} open={open} setOpen={setOpen}/>
                      )}  
-            </div>
         </>
     )
 }

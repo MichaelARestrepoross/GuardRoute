@@ -68,7 +68,7 @@ function IndexMap({ GOOGLE_MAPS_TOKEN, GOOGLE_MAP_ID, locations }) {
         </div>
       </div>
       <APIProvider apiKey={GOOGLE_MAPS_TOKEN}>
-        <div style={{ height: "400px", width: "70vw" }}>
+        <div className='flex justify-normal' style={{ height: "400px", width: "70vw" }}>
           {useCenterProp ? (
             <Map
               center={center}
