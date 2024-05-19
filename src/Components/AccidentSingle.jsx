@@ -16,7 +16,9 @@ const AccidentSingle = ({ accident }) => {
 
     // Styles for the scrollable div
     const scrollableDivStyles = {
-
+        maxHeight: '260px', 
+        overflowY: 'auto', 
+        paddingRight: '15px', 
     };
     
     const handleClick = (id) => {
