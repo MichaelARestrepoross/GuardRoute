@@ -8,16 +8,15 @@ import { Link } from "react-router-dom";
 const AboutTheDevs = () => {
   return (
     <div>
-      <div className="bg-white">
-      <div className="h-auto min-h-[300-vh] bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('https://res.cloudinary.com/dwygxzqku/image/upload/v1714886654/SquirrelQuest/acorn-background.jpg')" }}>
-          <div className="text-white py-12 text-center text-5xl font-bold bg-black/20" style={{ fontFamily: 'Silkscreen, sans-serif', fontStyle: 'normal' }}>
+      <div className="h-screen md-min-h-[300-vh] md-mb-72 md-h-auto bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('https://res.cloudinary.com/dwygxzqku/image/upload/v1715988788/GuardRoute/city.jpg')" }}>
+          <div className="text-white py-12 text-center text-5xl font-bold bg-black/20" style={{ fontFamily: 'Orbitron, sans-serif', fontStyle: 'normal' }}>
             Meet the Team
           </div>
           {/* <hr className="mx-10 border-2" /> */}
           <div className="grid lg:grid-cols-2 md:gap-2 ml-12 pb-24">
             <div className="bg-gray-100/50 rounded-xl mx-10 my-10 shadow-2xl  backdrop-brightness-150 backdrop-blur-3xl bg-opacity-90 hover:bg-gray-100 w-3/4">
               <div className="grid grid-cols-4 h-full">
-                <div className="bg-red-500 rounded-tl-lg rounded-bl-lg text-5xl text-white flex items-center justify-center col-span-1">
+                <div className="bg-red-500 rounded-tl-lg rounded-bl-lg text-5xl text-white flex items-center justify-center col-span-1 bg-pink-400">
                   JG
                 </div>
                 <div className="pb-10 p-5 col-span-3">
@@ -158,7 +157,6 @@ const AboutTheDevs = () => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

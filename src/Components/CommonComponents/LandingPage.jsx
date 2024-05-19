@@ -6,9 +6,9 @@ const LandingPage = () => {
   return (
       <>
       {/* add smooth scroll on click */}
-        <div className="flex items-center justify-center h-screen bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('https://res.cloudinary.com/dwygxzqku/image/upload/v1714969862/SquirrelQuest/andrey-svistunov-jgFA_cfgNHk-unsplash_klfedb.jpg')" }}
+        <div className="flex items-center justify-center h-screen bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('https://res.cloudinary.com/dwygxzqku/image/upload/v1715988788/GuardRoute/city.jpg')" }}
         >
-            <h1 className="p-8 text-4xl md:text-6xl font-bold mb-5 bg-black/70 text-white text-center rounded-xl hover:bg-black" style={{ fontFamily: 'Silkscreen, sans-serif', fontStyle: 'normal' }}
+            <h1 className="p-8 text-4xl md:text-6xl font-bold mb-5 bg-black/70 text-white text-center rounded-xl hover:bg-black" style={{ fontFamily: 'Orbitron, sans-serif', fontStyle: 'normal' }}
             onClick={() => navigate("/squirrels")}
             >
                   Welcome to GuardRoute
@@ -29,7 +29,7 @@ const LandingPage = () => {
         </div>
         <div className="flex justify-center items-center w-full">
               <video loop autoPlay muted>
-                <source src="https://s3.amazonaws.com/assets.centralparknyc.org/media/images/Spring-8.mp4" type="video/mp4" />
+                <source src="https://ia600502.us.archive.org/22/items/vid-20230930-102105864/VID_20230930_102105864.mp4" type="video/mp4" />
               </video>
         </div>
         <div className="h-screen bg-cover bg-center bg-fixed flex justify-center items-center" style={{ backgroundImage: "url('https://res.cloudinary.com/dwygxzqku/image/upload/v1714969864/SquirrelQuest/vincent-van-zalinge-rYZHmeH4dvQ-unsplash_dpgf2c.jpg')" }}>

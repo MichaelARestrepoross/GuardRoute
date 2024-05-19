@@ -1,14 +1,26 @@
 import { Link } from "react-router-dom";
 import { BsGithub } from "react-icons/bs";
-
+/*
+colors: {
+        'dark-navy': '#00043A',
+        'navy': '#002962',
+        'light-navy': '#004E89',
+        'white': '#FFFFFF',
+        'light-blue': '#407BA7',
+        'red': '#FF002B',
+        'red-orange': '#C00021',
+        'dark-red': '#A0001C',
+        'burgandy': '#800016',
+      }
+*/ 
 const Footer = () => {
   return (
     <footer>
       {/* bg-gradient-to-r from-dark-orange  to-orange shadow-lg shadow-slate-400" */}
-      <div className="bg-gradient-to-r from-dark-orange to-red-orange shadow-lg shadow-slate-400 fixed bottom-0 left-0 right-0">
+      <div className="bg-gradient-to-r from-red to-burgandy shadow-lg shadow-slate-400 fixed bottom-0 left-0 right-0">
         <div className="flex flex-row justify-between">
           <Link to={"/"}>
-            <div className="p-5 lg:pr-16 font-bold text-2xl text-white inline-block pt-3 pr-10" style={{ fontFamily: 'Silkscreen, sans-serif', fontStyle: 'normal' }}>
+            <div className="p-5 lg:pr-16 font-bold text-2xl text-white inline-block pt-3 pr-10" style={{ fontFamily: 'Orbitron, sans-serif', fontStyle: 'normal' }}>
               GR
             </div>
           </Link>
