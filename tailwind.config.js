@@ -24,6 +24,7 @@ export default {
       fontFamily: {
         "noto-sans": ['"Noto Sans Symbols"', "sans-serif"],
         "orbitron": ['"Orbitron"', 'sans-serif'],
+        "bebas-neue": ['"Bebas Neue"', 'sans-serif']
       },
       fontWeight: {
         // Define weight classes from 100 to 900
