@@ -29,7 +29,7 @@ const Footer = () => {
               <div className="hover:text-blue-400 lg:mr-10 ">About</div>
             </Link>
             <a
-              href={"https://github.com/MichaelARestrepoross/nyc-squirrel-census-visualization-project"}
+              href={"https://github.com/MichaelARestrepoross/GuardRoute"}
               target="_blank"
             >
               <BsGithub className="lg:mr-16 mr-3 w-5 h-5 mt-1 ml-10 lg:ml-48 hover:text-purple-400" />

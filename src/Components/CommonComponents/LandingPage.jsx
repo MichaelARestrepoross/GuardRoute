@@ -7,8 +7,8 @@ const LandingPage = () => {
       <>
       {/* add smooth scroll on click */}
         <div className="flex overflow-x-auto">
-          <div className="h-auto flex-shrink-0 flex items-center justify-center w-[65vw] bg-burgandy bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('https://res.cloudinary.com/dwygxzqku/image/upload/v1715988788/GuardRoute/city.jpg')" }}>
-            <h1 className="p-8 text-6xl md:text-4xl font-bold mb-5 bg-black/70 text-white text-center rounded-xl hover:bg-navy" style={{ fontFamily: 'Orbitron, sans-serif', fontStyle: 'normal' }} onClick={() => navigate("/accidents")}>
+          <div className="h-auto flex-shrink-0 flex items-center justify-center w-[65vw] bg-burgandy bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('https://res.cloudinary.com/dwygxzqku/image/upload/v1716107591/GuardRoute/shridhar-gupta-8ogSUIkFZWM-unsplash_umhj7z.jpg')" }}>
+            <h1 className="p-8 text-6xl md:text-4xl font-bold mb-5 bg-black/70 text-yellow text-center rounded-xl hover:text-navy hover:bg-yellow" style={{ fontFamily: 'Orbitron, sans-serif', fontStyle: 'normal' }} onClick={() => navigate("/accidents")}>
               Welcome to GuardRoute
             </h1>
           </div>

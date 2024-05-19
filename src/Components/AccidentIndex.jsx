@@ -91,7 +91,7 @@ const AccidentIndex = () => {
 
   return (
     <div className="h-screen mb-auto bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('https://res.cloudinary.com/dwygxzqku/image/upload/v1716106189/GuardRoute/nauman-abdul-hafeez-f05TIl5AOJc-unsplash_yxsagy.jpg')" }}>
-      <div className="container mx-auto px-10 p-6">
+      <div className="container m-auto p-10">
         <Modal isOpen={isModalOpen} onCancel={closeModal} />
 
         {/* Example of filter and view map button */}

@@ -39,7 +39,7 @@ const AccidentSingle = ({ accident }) => {
           <img src={imgUrl} alt="Person Image" className="w-full h-full object-cover" />
         </div>
       </div>
-      <div className='' style={scrollableDivStyles}>
+      <div className='bg-dark-navy bg-opacity-70 p-2 text-center' style={scrollableDivStyles} >
         <p>
           On {accident.crash_date ? formatCrashDate(accident.crash_date) : 'Unknown Date'}, at {accident.crash_time || 'Unknown Time'}, There was a accident where a
         </p>
@@ -76,14 +76,15 @@ const AccidentSingle = ({ accident }) => {
           <br />(Collision ID: <em>{accident.collision_id || 'Unknown'}</em>)
         </p>
       </div>
+      <div className='flex items-center justify-center'>
         <button
             onClick={() => handleClick(accident.collision_id)}
-            className="bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded-full inline-block text-base mt-4 mb-4"
-            style={{ fontFamily: 'Silkscreen, sans-serif', fontStyle: 'normal' }}
+            className="bg-yellow hover:bg-light-navy text-light-navy hover:text-white font-bold py-2 px-4 rounded-full inline-block text-base mt-4 mb-4"
+            style={{ fontFamily: 'Orbitron, sans-serif', fontStyle: 'normal' }}
             >
             Learn more about the incident
         </button>
-
+      </div>
     </div>
   );
 };

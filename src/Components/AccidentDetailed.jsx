@@ -144,18 +144,18 @@ const AccidentDetailed = () => {
             <div >
                 {isLoading ? (<p>Loading...</p>) :
                     (<div><br/>
-                        <h1 className='text-center text-3xl'>The vehicles involved in this accident:</h1>
+                        <h1 style={{ fontFamily: 'Bebas Neue, sans-serif', fontStyle: 'normal' }} className='text-center text-3xl'>The vehicles involved in this accident:</h1>
                         {vehicles.length > 0 ? (
                             <div className='flex-shrink-0 flex text-2xl justify-between gap-3 m-20'style={{ fontFamily: 'Courier, sans-serif', fontStyle: 'normal' }}>
                                 
                                 {vehicles.map((vehicle, index) => (
                                 <div key={index}>
-                                    <h1>Vehicle Details:</h1>
+                                    <h1><strong>Vehicle Details</strong></h1>
                                     <p>Vehicle Type: {vehicle.vehicle_type}</p>
                                     {vehicle.vehicle_make && <p>Vehicle Make: {vehicle.vehicle_make}</p>}
                                     {vehicle.vehicle_year && <p>Vehicle Year: {vehicle.vehicle_year}</p>}
 
-                                    <h1>Additional details of the incident:</h1>
+                                    <h1><strong>Additional details of the incident</strong></h1>
                                     {vehicle.travel_direction && <p>The driver was traveling {vehicle.travel_direction}.</p>}
                                     {vehicle.vehicle_occupants >= 1 ? <p>There were {vehicle.vehicle_occupants} occupants in the vehicle.</p>: <p>There was only one occupant, the driver.</p>}
                                     {vehicle.pre_crash && <p>Moments before the collision the vehicle was {vehicle.pre_crash}</p>}
@@ -163,7 +163,7 @@ const AccidentDetailed = () => {
                                     {vehicle.vehicle_damage && <p>The vehicle displayed damage on the {vehicle.vehicle_damage}</p>}
                                     {vehicle.public_property_damage === 'N' ? <p>Thankfully, the incident resulted in no property damage.</p>:<p>Unfortunately, the incident resulted in extensive property damage.</p>}
 
-                                    <h1>Driver Details:</h1>
+                                    <h1><strong>Driver Details</strong></h1>
                                     {vehicle.driver_sex && <p>Driver Sex: {vehicle.driver_sex}</p>}
                                     {vehicle.driver_license_status && <p>Driver License Status: {vehicle.driver_license_status}</p>}
                                     {vehicle.driver_license_jurisdiction && <p>Driver License Jurisdiction: {vehicle.driver_license_jurisdiction}</p>}
