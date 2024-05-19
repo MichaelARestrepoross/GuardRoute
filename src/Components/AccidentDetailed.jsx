@@ -113,13 +113,15 @@ const AccidentDetailed = () => {
                         {crash ? (
                             <div>
                                 
-                                {crash.number_of_pedestrians_killed && crash.number_of_pedestrians_killed > 0 ? <h1>Fatal Collision In NYC Area</h1> : <h1>Collision in NYC Area</h1>}
+                                {crash.number_of_pedestrians_killed > 0 || crash.number_of_cyclist_killed > 0 || crash.number_of_motorist_killed > 0 ? <h1><strong>Fatal Collision In NYC Area</strong></h1> : <h1><strong>Collision in NYC Area</strong></h1>}
                                 {crash.number_of_pedestrians_killed && crash.number_of_pedestrians_killed > 0 ? <p>In a tragic turn of events, a fatal collision has left the downtown area where this calamitous incident occured reeling. The incident, which occurred on the evening of {crash.crash_date} at {crash.crash_time}, has sent shockwaves through the community. According to reports, the collision resulted in {crash.number_of_persons_injured} injuries and {crash.number_of_persons_killed} fatalities. </p> : <p>In a disastrous turn of events, a collision has left the area reeling. The incident, which occurred on the evening of {crash.crash_date} at {crash.crash_time}, has sent shockwaves through the community.</p>}
 
                                 {crash.number_of_pedestrians_injured && crash.number_of_pedestrians_injured > 0 || crash.number_of_pedestrians_killed && crash.number_of_pedestrians_killed > 0 ?
                                 <p>Among the casualties were pedestrians highlighting the severity of the crash.</p>:<p>No pedestrians were involved in the accident.</p>}
 
-                                {crash.number_of_cyclist_injured > 0 || crash.number_of_cyclist_killed > 0 ? <p>Furthermore, {crash.number_of_cyclist_injured} cyclists and {crash.number_of_cyclist_killed} cyclists were also impacted by the collision, adding to the magnitude of the tragedy. </p> : <p></p>}
+                                {crash.number_of_cyclist_injured > 0 ? <p>Furthermore, there are {crash.number_of_cyclist_injured} cyclists injured  </p> : <p></p>}
+
+                                {crash.number_of_cyclist_killed > 0 ? <p>and {crash.number_of_cyclist_killed} cyclists were fatally wounded also as a result of the collision, adding to the magnitude of the tragedy.</p> : <p>and very fortunately {crash.number_of_cyclist_killed} cyclists were not fatally wounded as a result of the collision.</p>}
 
                                 {crash.number_of_motorist_injured > 0 ? <p>{crash.number_of_motorist_injured} motorists sustained injuries, underscoring the widespread impact of the incident</p> : <p></p>}
 
@@ -141,7 +143,7 @@ const AccidentDetailed = () => {
                 )}
             <div className="flex items-center justify-center h-[40vh] bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('https://res.cloudinary.com/dwygxzqku/image/upload/v1716102712/GuardRoute/header.jpg')" }}
         ></div>
-            <div >
+            <div>
                 {isLoading ? (<p>Loading...</p>) :
                     (<div><br/>
                         <h1 style={{ fontFamily: 'Bebas Neue, sans-serif', fontStyle: 'normal' }} className='text-center text-3xl'>The vehicles involved in this accident:</h1>
@@ -154,7 +156,7 @@ const AccidentDetailed = () => {
                                     <p>Vehicle Type: {vehicle.vehicle_type}</p>
                                     {vehicle.vehicle_make && <p>Vehicle Make: {vehicle.vehicle_make}</p>}
                                     {vehicle.vehicle_year && <p>Vehicle Year: {vehicle.vehicle_year}</p>}
-
+                                    <br/>
                                     <h1><strong>Additional details of the incident</strong></h1>
                                     {vehicle.travel_direction && <p>The driver was traveling {vehicle.travel_direction}.</p>}
                                     {vehicle.vehicle_occupants >= 1 ? <p>There were {vehicle.vehicle_occupants} occupants in the vehicle.</p>: <p>There was only one occupant, the driver.</p>}
@@ -162,7 +164,7 @@ const AccidentDetailed = () => {
                                     {vehicle.point_of_impact && <p>The point of impact was the {vehicle.point_of_impact}</p>}
                                     {vehicle.vehicle_damage && <p>The vehicle displayed damage on the {vehicle.vehicle_damage}</p>}
                                     {vehicle.public_property_damage === 'N' ? <p>Thankfully, the incident resulted in no property damage.</p>:<p>Unfortunately, the incident resulted in extensive property damage.</p>}
-
+                                    <br/>
                                     <h1><strong>Driver Details</strong></h1>
                                     {vehicle.driver_sex && <p>Driver Sex: {vehicle.driver_sex}</p>}
                                     {vehicle.driver_license_status && <p>Driver License Status: {vehicle.driver_license_status}</p>}
@@ -178,13 +180,14 @@ const AccidentDetailed = () => {
             </div>)}
             <div className="flex h-[40vh] bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('https://res.cloudinary.com/dwygxzqku/image/upload/v1716102031/GuardRoute/bicycle-accident_wmjxcp.jpg')" }}
             ></div>
+            <br/>
                 {isLoading ? (<p>Loading...</p>) :
                     (
                     <div className='mb-12'>
-                        <h1 className='text-center'>Details of the victims involved in the accident:</h1>
-                        <h2 className='text-center'>Victims of the collision: {persons.length}</h2>
+                        <h1 style={{ fontFamily: 'Bebas Neue, sans-serif', fontStyle: 'normal' }} className="text-3xl text-center">Details of the victims involved in the accident:</h1>
+                        <h2 style={{ fontFamily: 'Bebas Neue, sans-serif', fontStyle: 'normal' }} className='text-center text-xl'>Victims of the collision: {persons.length}</h2>
                         {persons.length > 0 ? (
-                            <div className='flex-shrink-0 flex text-2xl justify-between' style={{ fontFamily: 'Courier, sans-serif', fontStyle: 'normal' }}>{persons.map((person, index) => (
+                            <div className='flex-shrink-0 flex text-2xl justify-between p-20' style={{ fontFamily: 'Courier, sans-serif', fontStyle: 'normal' }}>{persons.map((person, index) => (
                                 <div className='w-[20vw]' key={index}>
                                     <p>Person Type: {person.person_type}</p>
                                     <p>Person Injury: {person.person_injury}</p>
