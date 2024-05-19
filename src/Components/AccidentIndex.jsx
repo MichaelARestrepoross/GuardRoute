@@ -116,7 +116,7 @@ const AccidentIndex = () => {
         </div>
 
             {/* Left arrow */}
-            {(scrollIndex ) && 
+            {(scrollIndex >0) && 
             <button
               className={`bg-mint/90 text-dark-teal hover:bg-dark-teal hover:text-mint font-bold py-4 px-4 rounded-xl inline-block text-2xl absolute left-0 top-1/2 transform -translate-y-1/2 ${scrollIndex <= 0 ? 'cursor-not-allowed' : ''}`}
               onClick={navigatePrev}
