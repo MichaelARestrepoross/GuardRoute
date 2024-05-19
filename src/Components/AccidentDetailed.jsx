@@ -187,7 +187,7 @@ const AccidentDetailed = () => {
                         <h1 style={{ fontFamily: 'Bebas Neue, sans-serif', fontStyle: 'normal' }} className="text-3xl text-center">Details of the victims involved in the accident:</h1>
                         <h2 style={{ fontFamily: 'Bebas Neue, sans-serif', fontStyle: 'normal' }} className='text-center text-xl'>Victims of the collision: {persons.length}</h2>
                         {persons.length > 0 ? (
-                            <div className='flex-shrink-0 flex text-2xl justify-between p-20' style={{ fontFamily: 'Courier, sans-serif', fontStyle: 'normal' }}>{persons.map((person, index) => (
+                            <div className='flex-shrink-0 flex text-2xl justify-between p-20 flex-wrap' style={{ fontFamily: 'Courier, sans-serif', fontStyle: 'normal' }}>{persons.map((person, index) => (
                                 <div className='w-[20vw]' key={index}>
                                     <p>Person Type: {person.person_type}</p>
                                     <p>Person Injury: {person.person_injury}</p>
@@ -199,7 +199,7 @@ const AccidentDetailed = () => {
                                     {person.safety_equipment && <p>Safety Equipment: {person.safety_equipment}</p>}
                                     {person.complaint && <p>Complaint: {person.complaint}</p>}
                                     {person.ped_role && <p>Pedestrian Role: {person.ped_role}</p>}
-                                    <p>Person Sex: {person.person_sex}</p>
+                                    {person.person_sex && <p>Person Sex: {person.person_sex}</p>}
                                     <br/>
                                 </div>
                 ))}</div>

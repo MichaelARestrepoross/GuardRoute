@@ -15,7 +15,7 @@ const LandingPage = () => {
           <div className="w-[35vw] flex-shrink-0 md:py-20 bg-cover bg-center bg-fixed p-9 bg-burgandy">
             <h1 className="text-white text-lg md:text-5xl mb-8 p-5 rounded-xl text-center" style={{ fontFamily: 'Orbitron, sans-serif', fontStyle: 'normal' }}>Navigating NYC's Roads</h1>
             <p className="text-white text-5xl md:text-3xl mb-8 p-5 rounded-xl text-center" style={{ fontFamily: 'Bebas Neue, sans-serif', fontStyle: 'normal' }}>
-              Stay informed on the latest car collision incidents across New York City with GuardRoute. From fender-benders to major accidents, we provide up-to-the-minute coverage, detailed reports, and insightful analysis on traffic incidents impacting NYC streets. Whether you're a concerned commuter, an advocate for road safety, or simply curious about local traffic trends, GuardRoute platform offers a reliable source for understanding the dynamics of vehicular collisions in the city that never sleeps.
+              Stay informed on the latest car collision incidents across New York City with GuardRoute. From fender-benders to major accidents, we provide up-to-the-minute coverage, detailed reports, and insightful analysis on traffic incidents impacting NYC streets. Whether you're a concerned commuter, an advocate for road safety, or simply curious about local traffic trends, GuardRoute platform offers a reliable source for understanding the dynamics of vehicular collisions in the city that never sleeps. Scroll right for safety information.
               <div onClick={() => navigate("/accidents")} className="hover:bg-navy p-5 m-5 rounded-xl">
                 Click to view Archives
               </div>
