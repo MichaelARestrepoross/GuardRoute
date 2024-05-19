@@ -62,6 +62,15 @@ const AccidentIndex = () => {
   }, [filter, accidents]);
 
 
+  const navigatePrev = () => {
+    setScrollIndex((prevIndex) => Math.max(prevIndex - 1, 0));
+  };
+
+  const navigateNext = () => {
+    setScrollIndex((prevIndex) =>
+      Math.min(prevIndex + 1, Math.ceil(filteredAccidents.length / 3) - 1)
+    );
+  };
 
   // Styles for the scrollable div
   const scrollableDivStyles = {
