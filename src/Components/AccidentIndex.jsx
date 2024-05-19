@@ -115,8 +115,17 @@ const AccidentIndex = () => {
           </button>
         </div>
 
-
-
+            {/* Left arrow */}
+            {(scrollIndex ) && 
+            <button
+              className={`bg-mint/90 text-dark-teal hover:bg-dark-teal hover:text-mint font-bold py-4 px-4 rounded-xl inline-block text-2xl absolute left-0 top-1/2 transform -translate-y-1/2 ${scrollIndex <= 0 ? 'cursor-not-allowed' : ''}`}
+              onClick={navigatePrev}
+              disabled={scrollIndex <= 0}
+              style={{ fontFamily: 'Silkscreen, sans-serif', fontStyle: 'normal' }}
+            >
+              {`<(${scrollIndex-1})`}
+            </button>
+            }
         {/* Displaying filtered accidents */}
         <div className="h-auto  mb-72 relative">
           <div className="flex items-center" style={scrollableDivStyles}>
@@ -130,7 +139,16 @@ const AccidentIndex = () => {
             </div>
           </div>
         </div>
-
+        {/* Right arrow */}
+        {scrollIndex  && (
+            <button
+              className="bg-mint/90 text-dark-teal hover:bg-dark-teal hover:text-mint font-bold py-4 px-4 rounded-xl inline-block text-2xl absolute right-0 top-1/2 transform -translate-y-1/2"
+              onClick={navigateNext}
+              style={{ fontFamily: 'Silkscreen, sans-serif', fontStyle: 'normal' }}
+            >
+              {'>'}
+            </button>
+          )}
       </div>
     </div>
   );
