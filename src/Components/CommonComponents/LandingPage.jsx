@@ -9,7 +9,7 @@ const LandingPage = () => {
         <div className="flex items-center justify-center h-screen bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('https://res.cloudinary.com/dwygxzqku/image/upload/v1715988788/GuardRoute/city.jpg')" }}
         >
             <h1 className="p-8 text-4xl md:text-6xl font-bold mb-5 bg-black/70 text-white text-center rounded-xl hover:bg-black" style={{ fontFamily: 'Orbitron, sans-serif', fontStyle: 'normal' }}
-            onClick={() => navigate("/squirrels")}
+            onClick={() => navigate("/accidents")}
             >
                   Welcome to GuardRoute
             </h1> 
@@ -36,7 +36,7 @@ const LandingPage = () => {
           <button
               href="#"
               className="bg-black/80 hover:bg-dark-teal hover:text-mint text-white font-bold py-9 px-9 rounded-xl inline-block text-7xl" style={{ fontFamily: 'Silkscreen, sans-serif', fontStyle: 'normal' }}
-              onClick={() => navigate("/squirrels")}
+              onClick={() => navigate("/accidents")}
           >
             Start Quest!
           </button> 

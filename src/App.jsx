@@ -13,6 +13,7 @@ import AccidentDetailed from './Components/AccidentDetailed';
 import DetailsMap from './Components/DetailsMap'
 import IndexMap from './Components/IndexMap'
 import PeopleIndex from './Components/PeopleIndex'
+import Heatmap from './Components/Heatmap'
 
 
 const App = () => {
@@ -33,6 +34,7 @@ const App = () => {
           <Route path="/maps" element={<DetailsMap />} />
           <Route path="/indexmaps" element={<IndexMap />} />
           <Route path="/aboutthedevs" element={<AboutTheDevs />} />
+          <Route path="/heatmap" element={<Heatmap />}/>
       </Routes>
       <Footer/>
     </>

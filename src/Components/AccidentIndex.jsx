@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react';
 import AccidentSingle from './AccidentSingle';
 import { useNavigate } from 'react-router-dom';
 import Modal from './CommonComponents/Modal';
+import IndexMap from './IndexMap';
 
 // Assuming these are environment variables for your API endpoint and token
 const VITE_PERSONS_BASE_URL = import.meta.env.VITE_PERSONS_BASE_URL;
 const VITE_PERSONS_TOKEN = import.meta.env.VITE_PERSONS_TOKEN;
+const GOOGLE_MAPS_TOKEN = import.meta.env.VITE_GOOGLE_MAPS_TOKEN;
+const GOOGLE_MAP_ID = import.meta.env.VITE_GOOGLE_MAP_ID;
 
 const AccidentIndex = () => {
   const [accidents, setAccidents] = useState([]);
@@ -14,6 +17,35 @@ const AccidentIndex = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [scrollIndex, setScrollIndex] = useState(0);
   const navigate = useNavigate();
+  const [collisions, setCollisons] = useState([]);
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const fetchCollisions = async () => {
+      try {
+        const response = await fetch(`https://data.cityofnewyork.us/resource/h9gi-nx95.json?$where=location IS NOT NULL&$$app_token=mvRU6FX2wx4oFsgNJ5gRsXas1`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        const data = await response.json();
+        setCollisons(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchCollisions();
+  }, []);
+
+  const locations = collisions && collisions.length > 0
+    ? collisions.map(collision => ({
+        lat: parseFloat(collision.location.latitude),
+        lng: parseFloat(collision.location.longitude),
+        collision_id: collision.collision_id,
+        crash_date: collision.crash_date,
+        crash_time: collision.crash_time,
+      }))
+    : [];
 
   useEffect(() => {
     const fetchAccidents = async () => {
@@ -44,23 +76,17 @@ const AccidentIndex = () => {
     setIsModalOpen(false);
   };
 
-  // Update filtered accidents when filter changes
   useEffect(() => {
     if (filter) {
-      // Filter accidents based on the selected region if i ever add any
       const filtered = accidents.filter((accident) => {
-        //filter for the future
         return accident.region === filter;
       });
       setFilteredAccidents(filtered);
     } else {
-      // If no filter is selected, set filtered accidents to the original list
       setFilteredAccidents(accidents);
     }
-    // Reset scroll index 
     setScrollIndex(0);
   }, [filter, accidents]);
-
 
   const navigatePrev = () => {
     setScrollIndex((prevIndex) => Math.max(prevIndex - 1, 0));
@@ -72,7 +98,10 @@ const AccidentIndex = () => {
     );
   };
 
-  // Styles for the scrollable div
+  const handleHeatmapClick = () => {
+    navigate('/heatmap');
+  };
+
   const scrollableDivStyles = {
     display: 'flex',
     overflowX: 'auto',
@@ -83,7 +112,6 @@ const AccidentIndex = () => {
     position: 'relative',
   };
 
-  // Styles for the content container
   const contentContainerStyles = {
     display: 'flex',
     flexWrap: 'nowrap',
@@ -94,7 +122,6 @@ const AccidentIndex = () => {
       <div className="container mx-auto px-10 p-6">
         <Modal isOpen={isModalOpen} onCancel={closeModal} />
 
-        {/* Example of filter and view map button */}
         <div className="flex flex-col md:flex-row items-center justify-center shadow-2xl">
           <select
             value={filter}
@@ -113,23 +140,28 @@ const AccidentIndex = () => {
           >
             View Map
           </button>
+          <button
+            className="bg-mint/90 text-dark-teal hover:bg-dark-teal hover:text-mint font-bold py-2 px-2 rounded-xl inline-block text-2xl mb-4 mx-4 my-4"
+            onClick={handleHeatmapClick}
+            style={{ fontFamily: 'Silkscreen, sans-serif', fontStyle: 'normal' }}
+          >
+            View Heatmap
+          </button>
         </div>
 
-            {/* Left arrow */}
-            {(scrollIndex >0) && 
-            <button
-              className={`bg-mint/90 text-dark-teal hover:bg-dark-teal hover:text-mint font-bold py-4 px-4 rounded-xl inline-block text-2xl absolute left-0 top-1/2 transform -translate-y-1/2 ${scrollIndex <= 0 ? 'cursor-not-allowed' : ''}`}
-              onClick={navigatePrev}
-              disabled={scrollIndex <= 0}
-              style={{ fontFamily: 'Silkscreen, sans-serif', fontStyle: 'normal' }}
-            >
-              {`<(${scrollIndex-1})`}
-            </button>
-            }
-        {/* Displaying filtered accidents */}
-        <div className="h-auto  mb-72 relative">
+        {(scrollIndex > 0) && 
+          <button
+            className={`bg-mint/90 text-dark-teal hover:bg-dark-teal hover:text-mint font-bold py-4 px-4 rounded-xl inline-block text-2xl absolute left-0 top-1/2 transform -translate-y-1/2 ${scrollIndex <= 0 ? 'cursor-not-allowed' : ''}`}
+            onClick={navigatePrev}
+            disabled={scrollIndex <= 0}
+            style={{ fontFamily: 'Silkscreen, sans-serif', fontStyle: 'normal' }}
+          >
+            {`<(${scrollIndex-1})`}
+          </button>
+        }
+
+        <div className="h-auto mb-72 relative">
           <div className="flex items-center" style={scrollableDivStyles}>
-            {/* List of accidents */}
             <div className="flex gap-4" style={contentContainerStyles}>
               {filteredAccidents.slice(scrollIndex * 3, scrollIndex * 3 + 3).map((accident) => (
                 <div key={accident.unique_id} className="h-full">
@@ -139,17 +171,17 @@ const AccidentIndex = () => {
             </div>
           </div>
         </div>
-        {/* Right arrow */}
-        {scrollIndex < Math.ceil(filteredAccidents.length / 3) -1 && (
-            <button
-              className="bg-mint/90 text-dark-teal hover:bg-dark-teal hover:text-mint font-bold py-4 px-4 rounded-xl inline-block text-2xl absolute right-0 top-1/2 transform -translate-y-1/2"
-              onClick={navigateNext}
-              style={{ fontFamily: 'Silkscreen, sans-serif', fontStyle: 'normal' }}
-            >
-              {`(${scrollIndex+1})>`}
-            </button>
-          )}
+        {scrollIndex < Math.ceil(filteredAccidents.length / 3) - 1 && (
+          <button
+            className="bg-mint/90 text-dark-teal hover:bg-dark-teal hover:text-mint font-bold py-4 px-4 rounded-xl inline-block text-2xl absolute right-0 top-1/2 transform -translate-y-1/2"
+            onClick={navigateNext}
+            style={{ fontFamily: 'Silkscreen, sans-serif', fontStyle: 'normal' }}
+          >
+            {`(${scrollIndex+1})>`}
+          </button>
+        )}
       </div>
+      <IndexMap locations={locations} GOOGLE_MAPS_TOKEN={GOOGLE_MAPS_TOKEN} GOOGLE_MAP_ID={GOOGLE_MAP_ID} open={open} setOpen={setOpen} />
     </div>
   );
 };

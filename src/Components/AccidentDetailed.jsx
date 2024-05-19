@@ -12,7 +12,7 @@ const PERSONS_API = import.meta.env.VITE_PERSONS_BASE_URL;
 const PERSONS_TOKEN = import.meta.env.VITE_PERSONS_TOKEN;
 
 const GOOGLE_MAPS_TOKEN = import.meta.env.VITE_GOOGLE_MAPS_TOKEN;
-const GOOGLE_MAP_ID = import.meta.env.VITE_GOOGLE_MAP_ID
+const GOOGLE_MAP_ID = import.meta.env.VITE_GOOGLE_MAP_ID;
 
 const AccidentDetailed = () => {
     const [crash, setCrash] = useState(null);
@@ -20,7 +20,7 @@ const AccidentDetailed = () => {
     const [persons, setPersons] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const { id } = useParams();
-    const [open, setOpen] = useState(false)
+    const [open, setOpen] = useState(false);
 
     useEffect(() => {
         async function fetchCrash() {
@@ -90,6 +90,17 @@ const AccidentDetailed = () => {
     
         fetchPersons();
     }, [id]);
+
+    let location = null;
+    if (crash) {
+        location = {
+            lat: parseFloat(crash.location.latitude),
+            lng: parseFloat(crash.location.longitude),
+            collision_id: crash.collision_id,
+            crash_date: crash.crash_date,
+            crash_time: crash.crash_time
+        };
+    }
     
 
     // const position = squirrel ? { lat: parseFloat(squirrel.y), lng: parseFloat(squirrel.x) } : { lat: 0, lng: 0 };
@@ -227,6 +238,9 @@ const AccidentDetailed = () => {
                 </div>)
                 }
                 </div>
+                {crash && (
+                    <DetailsMap GOOGLE_MAPS_TOKEN={GOOGLE_MAPS_TOKEN} GOOGLE_MAP_ID={GOOGLE_MAP_ID} location={location} open={open} setOpen={setOpen}/>
+                     )}  
             </div>
         </>
     )
