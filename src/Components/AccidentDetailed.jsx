@@ -160,9 +160,9 @@ const AccidentDetailed = () => {
                                     <h1><strong>Additional details of the incident</strong></h1>
                                     {vehicle.travel_direction && <p>The driver was traveling {vehicle.travel_direction}.</p>}
                                     {vehicle.vehicle_occupants >= 1 ? <p>There were {vehicle.vehicle_occupants} occupants in the vehicle.</p>: <p>There was only one occupant, the driver.</p>}
-                                    {vehicle.pre_crash && <p>Moments before the collision the vehicle was {vehicle.pre_crash}</p>}
-                                    {vehicle.point_of_impact && <p>The point of impact was the {vehicle.point_of_impact}</p>}
-                                    {vehicle.vehicle_damage && <p>The vehicle displayed damage on the {vehicle.vehicle_damage}</p>}
+                                    {vehicle.pre_crash && <p>Moments before the collision the vehicle was {vehicle.pre_crash}.</p>}
+                                    {vehicle.point_of_impact && <p>The point of impact was the {vehicle.point_of_impact}.</p>}
+                                    {vehicle.vehicle_damage && <p>The vehicle displayed damage on the {vehicle.vehicle_damage}.</p>}
                                     {vehicle.public_property_damage === 'N' ? <p>Thankfully, the incident resulted in no property damage.</p>:<p>Unfortunately, the incident resulted in extensive property damage.</p>}
                                     <br/>
                                     <h1><strong>Driver Details</strong></h1>
