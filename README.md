@@ -4,11 +4,9 @@
 
 ## Overview
 
-
-
 ## Visit our live site
 
-[Link to SquirrelQuest website](https://squirrelquest.netlify.app/)
+[Link to GuardRoute website](https://guardroute.netlify.app/)
 
 ## Our Team
 
