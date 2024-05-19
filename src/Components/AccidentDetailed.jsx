@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { formatDate, getImageUrl, generateNameFromID } from '../Helpers/SingleSquirrelHelper';
 import '../App.css';
 import DetailsMap from './DetailsMap';
 import PeopleIndex from './PeopleIndex';
+import {formatCrashDate} from '../Helpers/AccidentIndexHelper'
 
 const CRASHES_API = import.meta.env.VITE_CRASHES_BASE_URL;
 const CRASHES_TOKEN = import.meta.env.VITE_CRASHES_TOKEN;
@@ -126,7 +126,7 @@ const AccidentDetailed = () => {
                             <div>
                                 
                                 {crash.number_of_pedestrians_killed > 0 || crash.number_of_cyclist_killed > 0 || crash.number_of_motorist_killed > 0 ? <h1><strong>Fatal Collision In NYC Area</strong></h1> : <h1><strong>Collision in NYC Area</strong></h1>}
-                                {crash.number_of_pedestrians_killed && crash.number_of_pedestrians_killed > 0 ? <p>In a tragic turn of events, a fatal collision has left the downtown area where this calamitous incident occured reeling. The incident, which occurred on the evening of {crash.crash_date} at {crash.crash_time}, has sent shockwaves through the community. According to reports, the collision resulted in {crash.number_of_persons_injured} injuries and {crash.number_of_persons_killed} fatalities. </p> : <p>In a disastrous turn of events, a collision has left the area reeling. The incident, which occurred on the evening of {crash.crash_date} at {crash.crash_time}, has sent shockwaves through the community.</p>}
+                                {crash.number_of_pedestrians_killed && crash.number_of_pedestrians_killed > 0 ? <p>In a tragic turn of events, a fatal collision has left the downtown area where this calamitous incident occured reeling. The incident, which occurred on the evening of {formatCrashDate(crash.crash_date)} at {crash.crash_time}, has sent shockwaves through the community. According to reports, the collision resulted in {crash.number_of_persons_injured} injuries and {crash.number_of_persons_killed} fatalities. </p> : <p>In a disastrous turn of events, a collision has left the area reeling. The incident, which occurred on the evening of {formatCrashDate(crash.crash_date)} at {crash.crash_time}, has sent shockwaves through the community.</p>}
 
                                 {crash.number_of_pedestrians_injured && crash.number_of_pedestrians_injured > 0 || crash.number_of_pedestrians_killed && crash.number_of_pedestrians_killed > 0 ?
                                 <p>Among the casualties were pedestrians highlighting the severity of the crash.</p>:<p>No pedestrians were involved in the accident; </p>}
