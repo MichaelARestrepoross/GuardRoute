@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { formatDate, getImageUrl, generateNameFromID } from '../Helpers/SingleSquirrelHelper';
 import '../App.css';
 import DetailsMap from './DetailsMap';
+import PeopleIndex from './PeopleIndex';
 
 const CRASHES_API = import.meta.env.VITE_CRASHES_BASE_URL;
 const CRASHES_TOKEN = import.meta.env.VITE_CRASHES_TOKEN;
@@ -183,6 +184,7 @@ const AccidentDetailed = () => {
             <div className="flex h-[40vh] bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('https://res.cloudinary.com/dwygxzqku/image/upload/v1716102031/GuardRoute/bicycle-accident_wmjxcp.jpg')" }}
             ></div>
             <br/>
+            {/* <PeopleIndex accident={persons}/> */}
                 {isLoading ? (<p>Loading...</p>) :
                     (
                     <div className='mb-12'>
