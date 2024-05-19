@@ -44,7 +44,6 @@ to gain insights into:</p>
     </div>
   </div>
 </div>
-
       </>
   );
 };
