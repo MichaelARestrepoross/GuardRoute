@@ -121,34 +121,31 @@ const AccidentIndex = () => {
     <div className="h-auto min-h-screen mb-auto bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('https://res.cloudinary.com/dwygxzqku/image/upload/v1716106189/GuardRoute/nauman-abdul-hafeez-f05TIl5AOJc-unsplash_yxsagy.jpg')" }}>
       <div className="container m-auto p-10">
         <Modal isOpen={isModalOpen} onCancel={closeModal} />
-
-
+  
         <div className="flex flex-col md:flex-row items-center justify-center shadow-2xl">
-
-
           <button
-            className="bg-mint/90 text-dark-teal hover:bg-dark-teal hover:text-mint font-bold py-2 px-2 rounded-xl inline-block text-2xl mb-4 mx-4 my-4"
+            className="bg-yellow hover:bg-light-navy text-light-navy hover:text-white font-bold py-2 px-4 rounded-full inline-block text-base mt-4 mb-4"
             onClick={handleHeatmapClick}
             style={{ fontFamily: 'Silkscreen, sans-serif', fontStyle: 'normal' }}
           >
             View Heatmap
           </button>
         </div>
-
-            {/* Left arrow */}
-            {(scrollIndex >0) && 
-            <button
-              className={`bg-yellow/90 text-light-navy hover:bg-navy hover:text-white font-bold py-4 px-4 rounded-xl inline-block text-2xl absolute left-0 top-1/2 transform -translate-y-1/2 ${scrollIndex <= 0 ? 'cursor-not-allowed' : ''}`}
-              onClick={navigatePrev}
-              disabled={scrollIndex <= 0}
-              style={{ fontFamily: 'Silkscreen, sans-serif', fontStyle: 'normal' }}
-            >
-              {`⬅️ ${scrollIndex}`}
-            </button>
-            }
+  
+        {/* Left arrow */}
+        {scrollIndex > 0 && (
+          <button
+            className={`bg-yellow/90 text-light-navy hover:bg-navy hover:text-white font-bold py-4 px-4 rounded-xl inline-block text-2xl absolute left-0 top-1/2 transform -translate-y-1/2 ${scrollIndex <= 0 ? 'cursor-not-allowed' : ''}`}
+            onClick={navigatePrev}
+            disabled={scrollIndex <= 0}
+            style={{ fontFamily: 'Silkscreen, sans-serif', fontStyle: 'normal' }}
+          >
+            {`⬅️ ${scrollIndex}`}
+          </button>
+        )}
+  
         {/* Displaying filtered accidents */}
-
-        <div className="h-auto mb-72 relative">
+        <div className="h-auto mb-4 relative">
           <div className="flex items-center" style={scrollableDivStyles}>
             <div className="flex gap-4" style={contentContainerStyles}>
               {filteredAccidents.slice(scrollIndex * 3, scrollIndex * 3 + 3).map((accident) => (
@@ -158,21 +155,27 @@ const AccidentIndex = () => {
               ))}
             </div>
           </div>
-        <IndexMap locations={locations} GOOGLE_MAPS_TOKEN={GOOGLE_MAPS_TOKEN} GOOGLE_MAP_ID={GOOGLE_MAP_ID} open={open} setOpen={setOpen} />
         </div>
+  
+        {/* Centered map */}
+        <div className="flex justify-center items-center mb-20">
+          <IndexMap locations={locations} GOOGLE_MAPS_TOKEN={GOOGLE_MAPS_TOKEN} GOOGLE_MAP_ID={GOOGLE_MAP_ID} open={open} setOpen={setOpen} />
+        </div>
+  
         {/* Right arrow */}
-        {scrollIndex < Math.ceil(filteredAccidents.length / 3) -1 && (
-            <button
-              className="bg-yellow/90 text-light-navy hover:bg-navy hover:text-white font-bold py-4 px-4 rounded-xl inline-block text-2xl absolute right-0 top-1/2 transform -translate-y-1/2"
-              onClick={navigateNext}
-              style={{ fontFamily: 'Orbitron, sans-serif', fontStyle: 'normal' }}
-            >
-              {`${scrollIndex+2} ➡️`}
-            </button>
-          )}
+        {scrollIndex < Math.ceil(filteredAccidents.length / 3) - 1 && (
+          <button
+            className="bg-yellow/90 text-light-navy hover:bg-navy hover:text-white font-bold py-4 px-4 rounded-xl inline-block text-2xl absolute right-0 top-1/2 transform -translate-y-1/2"
+            onClick={navigateNext}
+            style={{ fontFamily: 'Orbitron, sans-serif', fontStyle: 'normal' }}
+          >
+            {`${scrollIndex + 2} ➡️`}
+          </button>
+        )}
       </div>
     </div>
   );
+  
 };
 
 export default AccidentIndex;

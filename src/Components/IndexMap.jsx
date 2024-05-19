@@ -56,14 +56,14 @@ function IndexMap({ GOOGLE_MAPS_TOKEN, GOOGLE_MAP_ID, locations }) {
       </p>
       <div>
         <div>
-          <label htmlFor="boroughs" style={{ color: 'white', marginRight: '10px' }}>Select Borough:</label>
+          <label htmlFor="boroughs" style={{ color: 'red', marginRight: '10px', backgroundColor: "white" }}>Select Borough:</label>
           <select id="boroughs" onChange={handleBoroughChange}>
             {Object.keys(boroughs).map((borough) => (
               <option key={borough} value={borough}>{borough}</option>
             ))}
           </select>
           {useCenterProp && (
-            <button className="bg-mint/90 text-dark-teal hover:bg-dark-teal hover:text-mint font-bold py-2 px-2 rounded-xl inline-block text-2xl mb-4 mx-4 my-4" onClick={handleDisableCenter} style={{ marginLeft: '10px' }}>Disable Center</button>
+            <button className="bg-yellow hover:bg-light-navy text-light-navy hover:text-white font-bold py-2 px-4 rounded-full inline-block text-base mt-4 mb-4" onClick={handleDisableCenter} style={{ marginLeft: '10px' }}>Disable Center</button>
           )}
         </div>
       </div>
