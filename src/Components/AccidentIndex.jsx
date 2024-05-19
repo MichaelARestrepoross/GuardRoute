@@ -118,28 +118,14 @@ const AccidentIndex = () => {
   };
 
   return (
-    <div className="h-auto mb-auto bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('https://res.cloudinary.com/dwygxzqku/image/upload/v1714890505/SquirrelQuest/jo-1o8-ns6svD0-unsplash_kafaft.jpg')" }}>
-      <div className="container mx-auto px-10 p-6">
+    <div className="h-screen mb-auto bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('https://res.cloudinary.com/dwygxzqku/image/upload/v1716106189/GuardRoute/nauman-abdul-hafeez-f05TIl5AOJc-unsplash_yxsagy.jpg')" }}>
+      <div className="container m-auto p-10">
         <Modal isOpen={isModalOpen} onCancel={closeModal} />
 
+
         <div className="flex flex-col md:flex-row items-center justify-center shadow-2xl">
-          <select
-            value={filter}
-            onChange={(e) => setFilter(e.target.value)}
-            className="mt-4 mb-10 p-2 border border-black rounded-lg"
-            style={{ fontFamily: 'Courier, sans-serif', fontStyle: 'normal' }}
-          >
-            <option value="">A</option>
-            <option value="">B</option>
-            <option value="">C</option>
-          </select>
-          <button
-            className="bg-mint/90 text-dark-teal hover:bg-dark-teal hover:text-mint font-bold py-2 px-2 rounded-xl inline-block text-2xl mb-4 mx-4 my-4"
-            onClick={openModal}
-            style={{ fontFamily: 'Silkscreen, sans-serif', fontStyle: 'normal' }}
-          >
-            View Map
-          </button>
+
+
           <button
             className="bg-mint/90 text-dark-teal hover:bg-dark-teal hover:text-mint font-bold py-2 px-2 rounded-xl inline-block text-2xl mb-4 mx-4 my-4"
             onClick={handleHeatmapClick}
@@ -149,16 +135,18 @@ const AccidentIndex = () => {
           </button>
         </div>
 
-        {(scrollIndex > 0) && 
-          <button
-            className={`bg-mint/90 text-dark-teal hover:bg-dark-teal hover:text-mint font-bold py-4 px-4 rounded-xl inline-block text-2xl absolute left-0 top-1/2 transform -translate-y-1/2 ${scrollIndex <= 0 ? 'cursor-not-allowed' : ''}`}
-            onClick={navigatePrev}
-            disabled={scrollIndex <= 0}
-            style={{ fontFamily: 'Silkscreen, sans-serif', fontStyle: 'normal' }}
-          >
-            {`<(${scrollIndex-1})`}
-          </button>
-        }
+            {/* Left arrow */}
+            {(scrollIndex >0) && 
+            <button
+              className={`bg-yellow/90 text-light-navy hover:bg-navy hover:text-white font-bold py-4 px-4 rounded-xl inline-block text-2xl absolute left-0 top-1/2 transform -translate-y-1/2 ${scrollIndex <= 0 ? 'cursor-not-allowed' : ''}`}
+              onClick={navigatePrev}
+              disabled={scrollIndex <= 0}
+              style={{ fontFamily: 'Silkscreen, sans-serif', fontStyle: 'normal' }}
+            >
+              {`⬅️ ${scrollIndex-1}`}
+            </button>
+            }
+        {/* Displaying filtered accidents */}
 
         <div className="h-auto mb-72 relative">
           <div className="flex items-center" style={scrollableDivStyles}>
@@ -171,15 +159,16 @@ const AccidentIndex = () => {
             </div>
           </div>
         </div>
-        {scrollIndex < Math.ceil(filteredAccidents.length / 3) - 1 && (
-          <button
-            className="bg-mint/90 text-dark-teal hover:bg-dark-teal hover:text-mint font-bold py-4 px-4 rounded-xl inline-block text-2xl absolute right-0 top-1/2 transform -translate-y-1/2"
-            onClick={navigateNext}
-            style={{ fontFamily: 'Silkscreen, sans-serif', fontStyle: 'normal' }}
-          >
-            {`(${scrollIndex+1})>`}
-          </button>
-        )}
+        {/* Right arrow */}
+        {scrollIndex < Math.ceil(filteredAccidents.length / 3) -1 && (
+            <button
+              className="bg-yellow/90 text-light-navy hover:bg-navy hover:text-white font-bold py-4 px-4 rounded-xl inline-block text-2xl absolute right-0 top-1/2 transform -translate-y-1/2"
+              onClick={navigateNext}
+              style={{ fontFamily: 'Orbitron, sans-serif', fontStyle: 'normal' }}
+            >
+              {`${scrollIndex+1} ➡️`}
+            </button>
+          )}
       </div>
       <IndexMap locations={locations} GOOGLE_MAPS_TOKEN={GOOGLE_MAPS_TOKEN} GOOGLE_MAP_ID={GOOGLE_MAP_ID} open={open} setOpen={setOpen} />
     </div>
