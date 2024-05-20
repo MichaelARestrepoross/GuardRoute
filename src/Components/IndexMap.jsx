@@ -21,7 +21,7 @@ function IndexMap({ GOOGLE_MAPS_TOKEN, GOOGLE_MAP_ID, locations }) {
 
   const [center, setCenter] = useState(boroughs.Manhattan);
   const [open, setOpen] = useState(null);
-  const [useCenterProp, setUseCenterProp] = useState(true);
+  const [useCenterProp, setUseCenterProp] = useState(false);
   const mapRef = useRef(null);
 
   const handleBoroughChange = async (event) => {
