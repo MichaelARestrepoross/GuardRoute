@@ -13,7 +13,7 @@ function DetailsMap({GOOGLE_MAPS_TOKEN, GOOGLE_MAP_ID, location, open, setOpen }
 
   return (
     <div className='w-100'>
-      <p className='w-400 rounded-xl bg-black/70 p-3 text-xl text-white' style={{ fontFamily: 'Silkscreen, sans-serif', fontStyle: 'normal' }}>LAST SPOTTED</p> 
+      <p className='w-400 rounded-xl bg-black/70 p-3 text-xl text-white' style={{ fontFamily: 'Silkscreen, sans-serif', fontStyle: 'normal' }}> THE ACIDENTS LOCATION</p> 
       <APIProvider apiKey={GOOGLE_MAPS_TOKEN}> 
         <div style={{ height: "400px", width: "70vw" }}>
           <Map defaultZoom={15} defaultCenter={{ lat: location.lat, lng: location.lng }} mapId={GOOGLE_MAP_ID}>
