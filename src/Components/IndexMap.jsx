@@ -24,10 +24,15 @@ function IndexMap({ GOOGLE_MAPS_TOKEN, GOOGLE_MAP_ID, locations }) {
   const [useCenterProp, setUseCenterProp] = useState(true);
   const mapRef = useRef(null);
 
-  const handleBoroughChange = (event) => {
+  const handleBoroughChange = async (event) => {
     const newCenter = boroughs[event.target.value];
     setCenter(newCenter);
     setUseCenterProp(true); // Use the center prop when dropdown is selected
+  
+    // Introduce a small delay before setting it to false
+    await new Promise(resolve => setTimeout(resolve, 0));
+    
+    setUseCenterProp(false);
   };
 
   const handleMapClick = () => {
@@ -62,9 +67,9 @@ function IndexMap({ GOOGLE_MAPS_TOKEN, GOOGLE_MAP_ID, locations }) {
               <option key={borough} value={borough}>{borough}</option>
             ))}
           </select>
-          {useCenterProp && (
+          {/* {useCenterProp && (
             <button className="bg-yellow hover:bg-light-navy text-light-navy hover:text-white font-bold py-2 px-4 rounded-full inline-block text-base mt-4 mb-4" onClick={handleDisableCenter} style={{ marginLeft: '10px' }}>Disable Center</button>
-          )}
+          )} */}
         </div>
       </div>
       <APIProvider apiKey={GOOGLE_MAPS_TOKEN}>
