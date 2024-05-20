@@ -103,12 +103,6 @@ const AccidentDetailed = () => {
         };
     }
     
-
-    // const position = squirrel ? { lat: parseFloat(squirrel.y), lng: parseFloat(squirrel.x) } : { lat: 0, lng: 0 };
-
-    // const imageUrl = squirrel && getImageUrl(squirrel.primary_fur_color, squirrel.unique_squirrel_id);
-    // const squirrelName = squirrel && generateNameFromID(squirrel.unique_squirrel_id);
-
     return (
         <>
         <div className="flex items-center justify-center h-[40vh] bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('https://res.cloudinary.com/dwygxzqku/image/upload/v1716102712/GuardRoute/header.jpg')" }}>

@@ -11,7 +11,7 @@ const Modal = ({ isOpen, onCancel }) => {
                     <header className="modal-header">
                         <button className="bg-black/80 hover:text-red text-white font-bold py-2 px-4 rounded-xl inline-block text-3xl" style={{ fontFamily: 'Courier'}} onClick={onCancel}>&times;</button>
                     </header>
-                    <img className="h-auto w-auto max-w-[80vw] max-h-[80vh] py-10" src={centralParkMap} alt="SquirrelMap"/>
+                    <img className="h-auto w-auto max-w-[80vw] max-h-[80vh] py-10" src={centralParkMap} alt="centralParkMaps"/>
                     <br/>
                 </div>
             </div>
